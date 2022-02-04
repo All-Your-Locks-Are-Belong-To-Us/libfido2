@@ -17,8 +17,8 @@ do_compress(fido_blob_t *out, const fido_blob_t *in, size_t origsiz, int decomp)
 
 	memset(out, 0, sizeof(*out));
 	if (in->len > ULONG_MAX || (ilen = (u_long)in->len) > BOUND ||
-	    origsiz > ULONG_MAX || (olen = decomp ? (u_long)origsiz :
-	    compressBound(ilen)) > BOUND)
+		origsiz > ULONG_MAX || (olen = decomp ? (u_long)origsiz :
+		compressBound(ilen)) > BOUND)
 		return FIDO_ERR_INVALID_ARGUMENT;
 	if ((out->ptr = calloc(1, olen)) == NULL)
 		return FIDO_ERR_INTERNAL;
