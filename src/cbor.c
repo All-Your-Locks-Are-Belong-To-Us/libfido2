@@ -8,6 +8,9 @@
 #include <openssl/hmac.h>
 #include <openssl/sha.h>
 #include "fido.h"
+#include "fido/eddsa.h"
+#include "fido/es256.h"
+#include "fido/rs256.h"
 
 static int
 check_key_type(cbor_item_t *item)
@@ -1041,7 +1044,7 @@ cbor_decode_pubkey(const cbor_item_t *item, int *type, void *key)
 
 	switch (*type) {
 	case COSE_ES256:
-		if (es256_pk_decode(item, key) < 0) {
+		if (es256_pk_decode(item, key) != FIDO_OK) {
 			fido_log_debug("%s: es256_pk_decode", __func__);
 			return (-1);
 		}
@@ -1053,13 +1056,13 @@ cbor_decode_pubkey(const cbor_item_t *item, int *type, void *key)
 		}
 		break;
 	case COSE_RS256:
-		if (rs256_pk_decode(item, key) < 0) {
+		if (rs256_pk_decode(item, key) != FIDO_OK) {
 			fido_log_debug("%s: rs256_pk_decode", __func__);
 			return (-1);
 		}
 		break;
 	case COSE_EDDSA:
-		if (eddsa_pk_decode(item, key) < 0) {
+		if (eddsa_pk_decode(item, key) != FIDO_OK) {
 			fido_log_debug("%s: eddsa_pk_decode", __func__);
 			return (-1);
 		}

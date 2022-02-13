@@ -31,6 +31,8 @@
 
 #include <openssl/ec.h>
 
+#include <cbor.h>
+
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -50,6 +52,7 @@ EVP_PKEY *eddsa_pk_to_EVP_PKEY(const eddsa_pk_t *);
 
 int eddsa_pk_from_EVP_PKEY(eddsa_pk_t *, const EVP_PKEY *);
 int eddsa_pk_from_ptr(eddsa_pk_t *, const void *, size_t);
+int eddsa_pk_decode(const cbor_item_t *, eddsa_pk_t *);
 
 #ifdef _FIDO_INTERNAL
 

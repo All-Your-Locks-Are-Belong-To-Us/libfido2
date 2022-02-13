@@ -111,7 +111,7 @@ rs256_pk_decode(const cbor_item_t *item, rs256_pk_t *k)
 		return (-1);
 	}
 
-	return (0);
+	return (FIDO_OK);
 }
 
 rs256_pk_t *

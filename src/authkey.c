@@ -6,6 +6,7 @@
  */
 
 #include "fido.h"
+#include "fido/es256.h"
 
 static int
 parse_authkey(const cbor_item_t *key, const cbor_item_t *val, void *arg)

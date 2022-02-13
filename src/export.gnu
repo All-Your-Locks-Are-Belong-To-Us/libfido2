@@ -1,10 +1,12 @@
 {
 	global:
+		eddsa_pk_decode;
 		eddsa_pk_free;
 		eddsa_pk_from_EVP_PKEY;
 		eddsa_pk_from_ptr;
 		eddsa_pk_new;
 		eddsa_pk_to_EVP_PKEY;
+		es256_pk_decode;
 		es256_pk_free;
 		es256_pk_from_EC_KEY;
 		es256_pk_from_EVP_PKEY;
@@ -252,6 +254,7 @@
 		fido_init;
 		fido_set_log_handler;
 		fido_strerr;
+		rs256_pk_decode;
 		rs256_pk_free;
 		rs256_pk_from_ptr;
 		rs256_pk_from_EVP_PKEY;

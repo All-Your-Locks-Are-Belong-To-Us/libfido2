@@ -31,6 +31,8 @@
 
 #include <openssl/rsa.h>
 
+#include <cbor.h>
+
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -51,6 +53,7 @@ EVP_PKEY *rs256_pk_to_EVP_PKEY(const rs256_pk_t *);
 int rs256_pk_from_EVP_PKEY(rs256_pk_t *, const EVP_PKEY *);
 int rs256_pk_from_RSA(rs256_pk_t *, const RSA *);
 int rs256_pk_from_ptr(rs256_pk_t *, const void *, size_t);
+int rs256_pk_decode(const cbor_item_t *, rs256_pk_t *);
 
 #ifdef __cplusplus
 } /* extern "C" */

@@ -96,10 +96,10 @@ eddsa_pk_decode(const cbor_item_t *item, eddsa_pk_t *k)
 	    cbor_map_is_definite(item) == false ||
 	    cbor_map_iter(item, k, decode_pubkey_point) < 0) {
 		fido_log_debug("%s: cbor type", __func__);
-		return (-1);
+		return (FIDO_ERR_INVALID_CBOR);
 	}
 
-	return (0);
+	return (FIDO_OK);
 }
 
 eddsa_pk_t *
